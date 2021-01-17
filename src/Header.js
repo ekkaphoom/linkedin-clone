@@ -7,8 +7,17 @@ import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import './Header.css';
 import HeaderOption from './HeaderOption';
+import { useDispatch } from 'react-redux';
+import { logout } from './features/userSlice';
+import { auth } from './filebase';
 
 export default function Header() {
+    
+    const dispatch = useDispatch();
+    const onClickLogout=()=>{
+        dispatch(logout());
+        auth.signOut();
+    }
     return (
         <div className="header">
             <div className="header__left">
@@ -16,7 +25,7 @@ export default function Header() {
 
                 <div className="header__search">
                     <SearchIcon />
-                    <input type="text" />
+                    <input type="text" placeholder="Search" />
                 </div>
             </div>
             <div className="header__right">
@@ -25,7 +34,7 @@ export default function Header() {
                 <HeaderOption title="Jobs" Icon={BusinessCenterIcon}/>
                 <HeaderOption title="Messaging" Icon={ChatIcon}/>
                 <HeaderOption title="Notifications" Icon={NotificationsIcon}/>
-                <HeaderOption avatar='https://avatars3.githubusercontent.com/u/5717457' title='My Profile' />
+                <HeaderOption onClick={onClickLogout}  title='My Profile' />
             </div>
         </div>
     )

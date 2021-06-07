@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import './HeaderOption.css'
 
-export default function HeaderOption({    
+export default function HeaderOption({
+    avatar,
     Icon,
     title,
     onClick
@@ -13,7 +14,7 @@ export default function HeaderOption({
     return (
         <div className="headerOption" onClick={onClick}>
             {Icon && <Icon className="headerOption__icon" />}
-            <Avatar className="headerOption__icon" src={user?.displayUrl} />
+            { avatar && <Avatar className="headerOption__icon" src={user?.photoURL} />}
             <h3 className="headerOption__title">{title}</h3>
         </div>
     )

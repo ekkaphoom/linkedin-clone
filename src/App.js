@@ -18,7 +18,7 @@ function App() {
           email: userAuth.email,
           uid: userAuth.uid,
           displayName: userAuth.displayName,
-          profileUrl: userAuth.profileUrl
+          photoURL: userAuth.photoURL
         }))
       }
       else{

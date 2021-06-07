@@ -8,12 +8,12 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('');
-    const [profileUrl, setProfileUrl] = useState('');
+    const [photoURL, setPhotoURL] = useState('');
 
     const onChangeEmail = value => setEmail(value);
     const onChangePassword = value => setPassword(value);
     const onChangeFullName = value => setFullName(value);
-    const onChangeProfileUrl = value => setProfileUrl(value);
+    const onChangePhotoURL = value => setPhotoURL(value);
     const dispatch = useDispatch();
 
     const loginToApp = (e) => {
@@ -23,7 +23,7 @@ export default function Login() {
                 email: userAuth.user.email,
                 uid: userAuth.user.uid,
                 displayName: userAuth.user.displayName,
-                profileUrl: userAuth.user.profileUrl
+                photoURL: userAuth.user.photoURL
             }))
         })
         .catch(error => alert(error));
@@ -36,13 +36,13 @@ export default function Login() {
             .then(userAuth => {
                 userAuth.user.updateProfile({
                     displayName: fullName,
-                    photoURL: profileUrl
+                    photoURL: photoURL
                 }).then(() => {
                     dispatch(login({
                         email: userAuth.user.email,
                         uid: userAuth.user.uid,
                         displayName: fullName,
-                        profileUrl: profileUrl
+                        photoURL: photoURL
                     }));
                 });
             })
@@ -53,7 +53,7 @@ export default function Login() {
             <img src="/linkedin-banner.jpg" />
             <form >
                 <input placeholder="Full name(required if registering)" type="text" onChange={e => onChangeFullName(e.target.value)} value={fullName} />
-                <input placeholder="Photo Url (optoinal)" type="text" onChange={e => onChangeProfileUrl(e.target.value)} value={profileUrl} />
+                <input placeholder="Photo Url (optoinal)" type="text" onChange={e => onChangePhotoURL(e.target.value)} value={photoURL} />
                 <input placeholder="Email" type="email" onChange={e => onChangeEmail(e.target.value)} value={email} />
                 <input placeholder="Password" type="password" onChange={e => onChangePassword(e.target.value)} value={password} />
                 <button type="submit" onClick={loginToApp} >Sign In</button>

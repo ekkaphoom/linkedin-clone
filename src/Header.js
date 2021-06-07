@@ -12,7 +12,7 @@ import { logout } from './features/userSlice';
 import { auth } from './filebase';
 
 export default function Header() {
-    
+
     const dispatch = useDispatch();
     const onClickLogout=()=>{
         dispatch(logout());
@@ -34,7 +34,7 @@ export default function Header() {
                 <HeaderOption title="Jobs" Icon={BusinessCenterIcon}/>
                 <HeaderOption title="Messaging" Icon={ChatIcon}/>
                 <HeaderOption title="Notifications" Icon={NotificationsIcon}/>
-                <HeaderOption onClick={onClickLogout}  title='My Profile' />
+                <HeaderOption avatar="true" onClick={onClickLogout}  title='Me' />
             </div>
         </div>
     )

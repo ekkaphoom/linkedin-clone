@@ -18,8 +18,8 @@ export default function Sidebar() {
         <div className="sidebar">
             <div className="sidebar__top">
                 <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="" />
-                <Avatar className="sidebar__avatar" src={user.profileUrl} >
-                    {user.displayName[0]}
+                <Avatar className="sidebar__avatar" src={user.photoURL} >
+                    {user.displayName && user.displayName[0] }
                 </Avatar>
                 <h2>{user.displayName}</h2>
                 <h4>{user.email}</h4>
